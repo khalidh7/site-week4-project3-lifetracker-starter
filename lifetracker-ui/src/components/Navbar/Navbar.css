@@ -1,3 +1,51 @@
 .Navbar {
-  padding-top: 20px;
+  height: 30%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient( #009EDB, #005EB8);
+  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+}
+
+.Navbar .activity-links{
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.Navbar .activity-links .activity-link{
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+  font-size: 20px;
+  background: linear-gradient(rgb(3, 45, 97), #02506f);
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.Navbar .account-links{
+  padding-left: 150px;
+  width: 12.5%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Navbar .account-links a button{
+  background: linear-gradient(#005EB8, #009EDB); /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.Navbar .activity-links img{
+  height: 50px;
+  width: auto;
 }
