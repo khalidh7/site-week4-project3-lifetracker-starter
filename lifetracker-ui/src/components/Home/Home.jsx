@@ -1,12 +1,18 @@
 import React from "react";
 import "./Home.css";
+import img from './hero.jpeg'
 
 export default function Home() {
     return (
         <div className="Home">
             <div className="home-header">
-                <h1 className="home-title">LifeTracker</h1>
-                <h2 className="home-subtitle">Track your life, one day at a time.</h2>
+                <div className="home-header-left">
+                    <h1 className="home-title">LifeTracker</h1>
+                    <h2 className="home-subtitle">Track your life, one day at a time.</h2>
+                </div>
+                <div className="home-header-right">
+                    <img src={img} alt="" />
+                </div>
             </div>
             <div className="home-body">
                 <div className="home-body-left">

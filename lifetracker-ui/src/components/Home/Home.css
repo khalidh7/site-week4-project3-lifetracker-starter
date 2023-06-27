@@ -4,7 +4,9 @@
 }
 
 .Home .home-header{
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .Home .home-header .home-title{
@@ -15,11 +17,29 @@
   font-size: 60px;
 }
 
+.Home .home-header .home-header-left{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Home .home-header .home-header-right{
+  width: 30%;
+}
+
+.Home .home-header .home-header-right img{
+  width: 100%;
+  border-radius: 5px;
+}
+
 .Home .home-body{
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  padding-top: 150px;
+  padding-top: 75px;
 }
 
 .Home .home-body .home-body-left{
