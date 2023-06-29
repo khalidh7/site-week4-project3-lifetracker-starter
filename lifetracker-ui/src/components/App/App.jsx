@@ -6,6 +6,7 @@ import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import ActivityPage from '../ActivityPage/ActivityPage'
+import ExercisePage from '../ExercisePage/ExercisePage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/activity" element={<ActivityPage />} />
           <Route path="/login" element={<Login />} />
           <Route path='/register' element={<Signup />} />
+          <Route path="/excerciseDashbo" element={<ExercisePage />} />
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </BrowserRouter>

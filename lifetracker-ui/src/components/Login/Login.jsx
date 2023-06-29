@@ -2,30 +2,29 @@ import React from "react";
 import "./Login.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import usersApi from "../../services/usersApi";
 
 export default function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [user, setUser] = useState({email: email, password: password});
   
   
-  function handleOnSubmit(){
-    try{
-      axios.post('http://localhost:5000/auth/login', {
-        "email": email,
-        "password": password
-      })
-    }catch(err){
-      console.log(err);
-    }
+  function handleOnSubmit(event){
+    event.preventDefault();
+    usersApi.loginUser(user);
+    window.location.href = "/excerciseDashbo";
   }
 
 
   function handleOnChangeLoginEmail(email){
     setEmail(email);
+    setUser({email: email, password: password})
   }
 
   function handleOnChangeLoginPassword(password){
     setPassword(password);
+    setUser({email: email, password: password})
   }
     return (
     <div className="login-container">
@@ -45,7 +44,7 @@ export default function Login() {
             id="password"
           />
         </div>
-        <button type="submit" className="submit-button" onClick={handleOnSubmit()}>Login</button>
+        <button type="submit" className="submit-button" onClick={(event)=>{handleOnSubmit(event)}}>Login</button>
       </form>
     </div>
     );
