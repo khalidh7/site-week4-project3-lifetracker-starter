@@ -2,6 +2,9 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const { BadRequestError, UnauthorizedError } = require("../utils/errors");
 const { validateFields } = require("../utils/validate");
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const secretKey = crypto.randomBytes(64).toString("hex");
 
 const { BCRYPT_WORK_FACTOR } = require("../config");
 
@@ -19,7 +22,7 @@ class User {
       id: user.id,
       fullname: user.fullName,
       username: user.username,
-      email: user.email,
+      email: user.email
     };
   }
 
@@ -38,7 +41,7 @@ class User {
       validateFields({
         required: requiredCreds,
         obj: creds,
-        location: "user authentication",
+        location: "user authentication"
       });
     } catch (err) {
       throw err;
@@ -73,12 +76,12 @@ class User {
       validateFields({
         required: requiredCreds,
         obj: creds,
-        location: "user registration",
+        location: "user registration"
       });
     } catch (err) {
       throw err;
     }
-    const existingUserWithEmail = await User.fetchUserByEmail(email);
+    const existingUserWithEmail = await User.fetchUserByEmailRegister(email);
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
     }
@@ -113,20 +116,28 @@ class User {
    * @param {String} email
    * @returns user
    */
-  static async fetchUserByEmail(email) {
-    const result = await db.query(
-      `SELECT id,
-              email, 
-              password,
-              fullname AS "fullName"
-           FROM users
-           WHERE email = $1`,
-      [email.toLowerCase()]
-    );
 
-    const user = result.rows[0];
+  static async fetchUserByEmailRegister(email) {
+    const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
+      email
+    ]);
+    const user = rows[0];
+    if (user) {
+      return user;
+    }
+  }
 
-    return user;
+  static async fetchUserByEmail({ email, password }) {
+    const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
+      email
+    ]);
+    const user = rows[0];
+    if (user) {
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (isPasswordValid) {
+        return user;
+      }
+    }
   }
 
   /**
@@ -149,6 +160,26 @@ class User {
     const user = result.rows[0];
 
     return user;
+  }
+
+  static async generateAuthToken(user) {
+    const payload = {
+      id: user.id,
+      fullname: user.fullname,
+      email: user.email
+    };
+
+    const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+    return token;
+  }
+
+  static async verifyAuthToken(token) {
+    try {
+      const decoded = jwt.verify(token, secretKey);
+      return decoded;
+    } catch (err) {
+      return null;
+    }
   }
 }
 
