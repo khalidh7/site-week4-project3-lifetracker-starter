@@ -27,40 +27,6 @@ class User {
   }
 
   /**
-   * Authenticate user with email and password.
-   *
-   * Throws UnauthorizedError if user not found or wrong password.
-   *
-   * @returns user
-   **/
-
-  static async authenticate(creds) {
-    const { email, password } = creds;
-    const requiredCreds = ["email", "password"];
-    try {
-      validateFields({
-        required: requiredCreds,
-        obj: creds,
-        location: "user authentication"
-      });
-    } catch (err) {
-      throw err;
-    }
-
-    const user = await User.fetchUserByEmail(email);
-
-    if (user) {
-      // compare hashed password to a new hash from password
-      const isValid = await bcrypt.compare(password, user.password);
-      if (isValid === true) {
-        return User._createPublicUser(user);
-      }
-    }
-
-    throw new UnauthorizedError("Invalid username/password");
-  }
-
-  /**
    * Register user with data.
    *
    * Throws BadRequestError on duplicates.
