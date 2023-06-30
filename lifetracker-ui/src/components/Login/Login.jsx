@@ -1,8 +1,8 @@
 import React from "react";
 import "./Login.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import usersApi from "../../services/usersApi";
+import Api from "../../utilities/api";
+
 
 export default function Login() {
   let [email, setEmail] = useState("");
@@ -12,14 +12,15 @@ export default function Login() {
   
   function handleOnSubmit(event){
     event.preventDefault();
-    usersApi.loginUser(user);
-    window.location.href = "/excerciseDashbo";
+    Api.login(user);
+    // window.location.href = "/excerciseDashbo";
   }
 
 
   function handleOnChangeLoginEmail(email){
     setEmail(email);
     setUser({email: email, password: password})
+    console.log(user)
   }
 
   function handleOnChangeLoginPassword(password){
@@ -31,17 +32,19 @@ export default function Login() {
       <h1>Login</h1>
       <form className="form">
         <div className="form-group">
-          <label className="email-login" htmlFor="email" onChange={(event)=>{handleOnChangeLoginEmail(event.target.value)}}>Email:</label>
+          <label className="email-login" htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
+            onChange={(event)=>{handleOnChangeLoginEmail(event.target.value)}}
           />
         </div>
         <div className="form-group">
-          <label className="password-login" htmlFor="password" onChange={(event)=>{handleOnChangeLoginPassword(event.target.value)}}>Password:</label>
+          <label className="password-login" htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
+            onChange={(event)=>{handleOnChangeLoginPassword(event.target.value)}}
           />
         </div>
         <button type="submit" className="submit-button" onClick={(event)=>{handleOnSubmit(event)}}>Login</button>

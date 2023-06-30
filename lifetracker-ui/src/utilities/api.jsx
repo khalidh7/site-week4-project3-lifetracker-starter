@@ -1,40 +1,53 @@
-class ApiError extends Error {
-    constructor(message, details) {
-      super(message)
-      this.name = 'API' + this.name
-      this.details = details
+import axios from 'axios'
+
+class Api {
+
+  constructor() {
+    this.url = 'http://localhost:5000'
+    this.token = localStorage.getItem('token') || null
+    this.tokenName = "lifeTrackerToken"
+  }
+
+  setToken(token) {
+    this.token = token
+    localStorage.setItem(this.tokenName, token)
+  }
+
+  async request(method, path, data) {
+    
+    const url = `${this.url}/${path}`
+    const headers = {
+      'Content-Type': 'application/json',
     }
+
+    if (this.token) {
+      headers['Authorization'] = `Bearer ${this.token}`
+    }
+
+
+    try{
+      const response = await axios({
+        method,
+        url,
+        data,
+        headers,
+      })
+      return response.data
+    }
+    catch(error) {
+      console.log(error)
+      return error.response.data
+    }
+  }
+
+  async login(creds) {
+    console.log(creds)
+    return await this.request("POST", "auth/login", creds)
+  }
+
+  async register(creds) {
+    return await this.request("POST", "auth/register", creds)
+  }
 }
 
-const headers = ({
-    'Content-Type': 'application/json'
-})
-
-const request = async (method, url, body=null) => {
-
-    const options = body ? { method, headers, body: JSON.stringify(body) } : { method, headers }
-  
-    let response
-
-    try {
-      response = await fetch(url, options)
-    }
-    catch(e) {
-      throw new ApiError('API cannot be reached', e.message)
-    }
-  
-    const data = await response.json()
-
-    if (response.ok) {
-      return data
-    }
-    else {
-      if (data.error)
-        throw new ApiError(data.error.message, data.error.details)
-    }
-}
-
-export {
-    ApiError,
-    request
-}
+export default new Api()

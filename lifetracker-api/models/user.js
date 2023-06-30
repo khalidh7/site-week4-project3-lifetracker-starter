@@ -102,13 +102,16 @@ class User {
     }
   }
 
-  static async fetchUserByEmail({ email, password }) {
+  static async fetchUserByEmail(creds) {
     const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
-      email
+      creds.email
     ]);
     const user = rows[0];
     if (user) {
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid = await bcrypt.compare(
+        creds.password,
+        user.password
+      );
       if (isPasswordValid) {
         return user;
       }
