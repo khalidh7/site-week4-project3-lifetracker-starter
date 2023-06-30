@@ -8,7 +8,7 @@ router.post("/login", async function (req, res, next) {
 
   if (user) {
     const token = await User.generateAuthToken(user);
-    res.json({ user, token });
+    res.json({ token });
   } else {
     res.status(401).json({ message: "Invalid email/password" });
   }

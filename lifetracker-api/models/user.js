@@ -37,7 +37,6 @@ class User {
 
   static async register(creds) {
     const { email, password, firstname, lastname, username } = creds;
-    console.log(email, password, firstname, lastname, username);
     const requiredCreds = [
       "email",
       "password",

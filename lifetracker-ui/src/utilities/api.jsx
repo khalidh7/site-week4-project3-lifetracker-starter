@@ -41,7 +41,6 @@ class Api {
   }
 
   async login(creds) {
-    console.log(creds)
     return await this.request("POST", "auth/login", creds)
   }
 
