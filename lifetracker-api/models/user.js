@@ -20,7 +20,8 @@ class User {
   static _createPublicUser(user) {
     return {
       id: user.id,
-      fullname: user.fullName,
+      firstname: user.firstname,
+      lastname: user.lastname,
       username: user.username,
       email: user.email
     };
@@ -35,9 +36,15 @@ class User {
    **/
 
   static async register(creds) {
-    const { email, password, fullname, username } = creds;
-    console.log(email, password, fullname, username);
-    const requiredCreds = ["email", "password", "fullname", "username"];
+    const { email, password, firstname, lastname, username } = creds;
+    console.log(email, password, firstname, lastname, username);
+    const requiredCreds = [
+      "email",
+      "password",
+      "firstname",
+      "lastname",
+      "username"
+    ];
     try {
       validateFields({
         required: requiredCreds,
@@ -58,17 +65,19 @@ class User {
     const result = await db.query(
       `INSERT INTO users (
           password,
-          fullname,
+          firstname,
+          lastname,
           username,
           email
         )
-        VALUES ($1, $2, $3, $4)
+        VALUES ($1, $2, $3, $4, $5)
         RETURNING id,
                   email,            
-                  fullname AS "fullName",
+                  firstname AS "firstname",
+                  lastname AS "lastname",
                   username
                   `,
-      [hashedPassword, fullname, username, normalizedEmail]
+      [hashedPassword, firstname, lastname, username, normalizedEmail]
     );
 
     const user = result.rows[0];
@@ -117,7 +126,8 @@ class User {
       `SELECT id,
               email,    
               password,
-              fullname AS "fullName",         
+              firstname AS "firstname",
+              "lastname" AS "lastname",         
            FROM users
            WHERE id = $1`,
       [userId]
@@ -131,7 +141,8 @@ class User {
   static async generateAuthToken(user) {
     const payload = {
       id: user.id,
-      fullname: user.fullname,
+      firstname: user.firstname,
+      lastname: user.lastname,
       email: user.email
     };
 

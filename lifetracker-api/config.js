@@ -11,7 +11,7 @@ function getDatabaseUri() {
     : "postgres";
   const dbHost = process.env.DATABASE_HOST || "local";
   const dbPort = process.env.DATABASE_PORT || 5432;
-  const dbProdName = process.env.DATABASE_NAME || "life_tracker";
+  const dbProdName = "life_tracker";
   const dbName = "life_tracker";
   return (
     process.env.DATABASE_URL ||
@@ -30,5 +30,5 @@ console.log("---");
 module.exports = {
   PORT,
   BCRYPT_WORK_FACTOR,
-  getDatabaseUri,
+  getDatabaseUri
 };
