@@ -1,5 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
+const Exercise = require("../models/exercise");
+const Sleep = require("../models/sleep");
 const router = express.Router();
 
 router.post("/login", async function (req, res, next) {

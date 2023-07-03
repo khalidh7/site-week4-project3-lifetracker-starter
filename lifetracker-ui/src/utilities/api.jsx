@@ -14,7 +14,6 @@ class Api {
   }
 
   async request(method, path, data) {
-    
     const url = `${this.url}/${path}`
     const headers = {
       'Content-Type': 'application/json',
@@ -23,7 +22,6 @@ class Api {
     if (this.token) {
       headers['Authorization'] = `Bearer ${this.token}`
     }
-
 
     try{
       const response = await axios({
@@ -47,6 +45,18 @@ class Api {
   async register(creds) {
     return await this.request("POST", "auth/register", creds)
   }
-}
 
+  async exercises(userid) {
+    return await this.request("POST", `exercise/list`, userid)
+  }
+
+  async exerciseById(userid, id) {
+    return await this.request("POST", `exercise/${id}`, {userid, id})
+  }
+
+  async addExercise(exercise) {
+    return await this.request("POST", `exercise/add`, exercise)
+  }
+
+}
 export default new Api()

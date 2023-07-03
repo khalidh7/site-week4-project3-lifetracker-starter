@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const { NotFoundError } = require("./utils/errors");
 const config = require("./config");
 const authRoutes = require("./routes/auth");
+const exerciseRoutes = require("./routes/exercise");
+const sleepRoutes = require("./routes/sleep");
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use(morgan("tiny"));
 
 // routes
 app.use("/auth", authRoutes);
+app.use("/exercise", exerciseRoutes);
+app.use("/sleep", sleepRoutes);
 
 // health check
 app.get("/", function (req, res) {

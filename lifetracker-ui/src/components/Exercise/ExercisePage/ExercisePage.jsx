@@ -8,14 +8,14 @@ import Api from "../../../utilities/api";
 
 export default function ExercisePage() {
     const [exercise, setExercise] = useState();
+    const [userid, setUserid] = useState(localStorage.getItem('userid') || 1);
 
     useEffect(() => {
         const fetchData = async () => {
-            const {data} = await Api.listExercise();
-
-            if (data?.exercise) {
-                data.exercise = Array.from(data.exercise).reverse();
-                setExercise(data.exercise);
+            let data = await Api.exercises({userid: userid,});
+            if (data?.exercises) {
+                data = Array.from(data.exercises).reverse();
+                setExercise(data);
             }
 
         };
