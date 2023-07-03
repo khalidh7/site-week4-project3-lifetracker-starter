@@ -4,12 +4,23 @@ CREATE TABLE users (
   password   TEXT NOT NULL,
   firstname  TEXT NOT NULL,
   lastname   TEXT NOT NULL,
-  email      TEXT NOT NULL UNIQUE CHECK (position('@' IN email) > 1));
+  email      TEXT NOT NULL UNIQUE CHECK (position('@' IN email) > 1),
+  created   TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated  TIMESTAMP NOT NULL DEFAULT NOW());
 
-CREATE TABLE activity (
+CREATE TABLE exercises (
   id       SERIAL PRIMARY KEY,
-  userid    int REFERENCES users(id),
-  date      TEXT NOT NULL,
-  starttime TEXT NOT NULL,
-  endtime   TEXT NOT NULL,
-  rating    TEXT NOT NULL);
+  userid    INTEGER REFERENCES users(id),
+  date      TIMESTAMP NOT NULL DEFAULT NOW(),
+  duration  INTEGER NOT NULL,
+  type      TEXT NOT NULL,
+  rating    INTEGER NOT NULL
+  );
+
+CREATE TABLE sleep (
+  id       SERIAL PRIMARY KEY,
+  userid    INTEGER REFERENCES users(id),
+  date      TIMESTAMP NOT NULL DEFAULT NOW(),
+  duration  INTEGER NOT NULL,
+  starttime TIMESTAMP NOT NULL DEFAULT NOW(),
+  endtime   TIMESTAMP NOT NULL DEFAULT NOW());

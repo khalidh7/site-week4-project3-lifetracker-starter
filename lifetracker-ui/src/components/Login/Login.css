@@ -24,7 +24,9 @@
   }
   
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="firstname"],
+  input[type="lastname"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
