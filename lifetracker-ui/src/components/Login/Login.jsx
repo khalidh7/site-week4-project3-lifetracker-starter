@@ -2,18 +2,18 @@ import React from "react";
 import "./Login.css";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
-import jwt_decode from "jwt-decode";
 
 export default function Login() {
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [user, setUser] = useState({email: email, password: password});
-  let [name, setname] = useState("");
-  let [token, setToken] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({email: email, password: password});
+  const [name, setName] = useState();
 
   function handleOnSubmit(event){
     event.preventDefault();
-    Api.login(user).then((response)=>{setToken(jwt_decode(response.token))});
+    Api.login(user).then((response)=>{localStorage.setItem("jwt", (response.token))});
+    Api.user({token: localStorage.getItem("jwt")}).then((response)=>{setName(response.firstname + " " + response.lastname)});
+    console.log(name)
   }
 
 
@@ -48,7 +48,7 @@ export default function Login() {
         </div>
         <button type="submit" className="submit-button" onClick={(event)=>{handleOnSubmit(event)}}>Login</button>
       </form>
-      {token ? <h1>Hello {token.firstname} {token.lastname}</h1> : null}
+      {name ? <h1>Hello {name}</h1> : null}
     </div>
     );
 }

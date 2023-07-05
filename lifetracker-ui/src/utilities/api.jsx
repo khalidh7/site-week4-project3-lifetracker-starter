@@ -45,6 +45,10 @@ class Api {
   async register(creds) {
     return await this.request("POST", "auth/register", creds)
   }
+  
+  async user(token){
+    return await this.request("POST", `auth/profile`, token)
+  }
 
   async exercises(userid) {
     return await this.request("POST", `exercise/list`, userid)
@@ -57,6 +61,7 @@ class Api {
   async addExercise(exercise) {
     return await this.request("POST", `exercise/add`, exercise)
   }
+
 
 }
 export default new Api()
