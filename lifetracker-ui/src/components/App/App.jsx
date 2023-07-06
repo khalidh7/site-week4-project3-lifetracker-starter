@@ -8,12 +8,20 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ActivityPage from "../ActivityPage/ActivityPage";
 import ExercisePage from "../Exercise/ExercisePage/ExercisePage";
 import SleepPage from "../Sleep/SleepPage/SleepPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Api from "../../utilities/api";
 
 function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
 
+  useEffect(() => {
+    Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+      setUserGlobal(response);
+    });
+  }, [token]);
+
+  console.log(userGlobal);
   return (
     <>
       <BrowserRouter>
@@ -37,7 +45,10 @@ function App() {
             }
           />
           <Route path="/register" element={<Signup />} />
-          <Route path="/activity" element={<ActivityPage />} />
+          <Route
+            path="/activity"
+            element={<ActivityPage user={userGlobal} />}
+          />
           <Route path="/exercise" element={<ExercisePage />} />
           <Route path="/sleep" element={<SleepPage />} />
           <Route path="*" element={<Navigate to="/" />} />

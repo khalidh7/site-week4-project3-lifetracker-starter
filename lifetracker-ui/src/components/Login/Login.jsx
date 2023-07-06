@@ -2,12 +2,14 @@ import React from "react";
 import "./Login.css";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ token, userGlobal, setToken, setUserGlobal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({ email: email, password: password });
   const [name, setName] = useState();
+  const navigate = useNavigate();
 
   function handleOnSubmit(event) {
     event.preventDefault();
@@ -20,7 +22,7 @@ export default function Login({ token, userGlobal, setToken, setUserGlobal }) {
       setUserGlobal(response);
       setName(response.firstname + " " + response.lastname);
     });
-    console.log(name);
+    navigate("/activity");
   }
 
   function handleOnChangeLoginEmail(email) {
@@ -74,3 +76,5 @@ export default function Login({ token, userGlobal, setToken, setUserGlobal }) {
     </div>
   );
 }
+
+//when logged in, move to different page and update all components including navbar
