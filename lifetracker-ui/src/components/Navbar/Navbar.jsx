@@ -1,8 +1,19 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "./logo.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ token, user, setToken, setUser }) {
+  const navigate = useNavigate();
+
+  function clearToken(e) {
+    e.preventDefault();
+    localStorage.removeItem("jwt");
+    setToken(null);
+    setUser(null);
+    navigate("/");
+  }
+
   return (
     <div className="Navbar">
       <div className="activity-links">
@@ -23,7 +34,7 @@ export default function Navbar({ token, user, setToken, setUser }) {
         </a>
       </div>
       <div className="account-links">
-        {!localStorage.getItem("token") ? (
+        {!token ? (
           <div>
             <a className="sign-in-button" href="/login">
               <button type="button" className="chakra-button css-1t9i4zo">
@@ -37,8 +48,12 @@ export default function Navbar({ token, user, setToken, setUser }) {
             </a>
           </div>
         ) : (
-          <a className="sign-in-button" href="/login">
-            <button type="button" className="chakra-button css-1t9i4zo">
+          <a className="sign-out-button">
+            <button
+              type="submit"
+              className="chakra-button css-1t9i4zo"
+              onClick={(e) => clearToken(e)}
+            >
               Sign out
             </button>
           </a>
