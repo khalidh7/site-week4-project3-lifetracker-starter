@@ -1,18 +1,56 @@
 import React from "react";
-import Api from "../../../utilities/api";
 import "./SleepPage.css";
+import SleepGrid from "../SleepGrid/SleepGrid";
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import SleepGrid from "../SleepGrid/SleepGrid";
+import Api from "../../../utilities/api";
 
-export default function SleepPage({ user }) {
+export default function SleepPage({ user, setUserGlobal }) {
+  const [sleep, setSleep] = useState();
+  const [userid, setUserid] = useState(user?.id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setUserid(user.id);
+      let data = await Api.sleep({ userid: userid });
+      if (data?.sleep) {
+        data = Array.from(data.sleep).reverse();
+        setSleep(data);
+      }
+    };
+    fetchData();
+  }, [user]);
+
+  const sortCards = (event) => {
+    let newSleep = Array.from(sleep).reverse();
+    setSleep(newSleep);
+  };
+
   return (
     <>
       {user ? (
-        <div>
-          <h1>Welcome {user?.firstname}</h1>
-          <h2>Sleep Tracking Coming Soon!</h2>
+        <div className="sleep">
+          <div className="sleep-header">
+            <h1>Sleep</h1>
+          </div>
+          <div className="sleep-body">
+            <Link to="/sleep/add" className="sleep-button">
+              <Button variant="contained" color="primary">
+                Add Sleep
+              </Button>
+            </Link>
+            <Link className="sleep-button">
+              <Button variant="contained" color="primary" onClick={sortCards}>
+                Sort
+              </Button>
+            </Link>
+            {sleep?.length > 0 ? (
+              <SleepGrid sleep={sleep} />
+            ) : (
+              <h2>No Sleep yet!</h2>
+            )}
+          </div>
         </div>
       ) : (
         <div className="notlogged">

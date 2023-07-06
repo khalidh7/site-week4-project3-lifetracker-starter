@@ -3,6 +3,7 @@ const { BadRequestError, UnauthorizedError } = require("../utils/errors");
 
 class Sleep {
   static async listSleepForUser(userid) {
+    console.log(userid);
     const results = await db.query(
       `
             SELECT id,
@@ -10,7 +11,7 @@ class Sleep {
                    date,
                    duration,
                    starttime,
-                   endtime,
+                   endtime
             FROM sleep
             WHERE userid = $1
             `,
@@ -48,7 +49,8 @@ class Sleep {
     return sleep;
   }
 
-  static async createSleep({ sleep, user }) {
+  static async createSleep(sleep) {
+    console.log(sleep);
     const requiredFields = [
       "date",
       "duration",
@@ -57,19 +59,19 @@ class Sleep {
       "id",
       "userid"
     ];
-    requiredFields.forEach((field) => {
-      if (!sleep.hasOwnProperty(field)) {
-        throw new BadRequestError(
-          `Missing required field - ${field} - in request body.`
-        );
-      }
-    });
+    // requiredFields.forEach((field) => {
+    //   if (!sleep.hasOwnProperty(field)) {
+    //     throw new BadRequestError(
+    //       `Missing required field - ${field} - in request body.`
+    //     );
+    //   }
+    // });
 
-    if (sleep.userid !== user.id) {
-      throw new UnauthorizedError(
-        `User with id: ${user.id} does not have permission to create sleep with id: ${sleep.id}`
-      );
-    }
+    // if (sleep.userid !== user.id) {
+    //   throw new UnauthorizedError(
+    //     `User with id: ${user.id} does not have permission to create sleep with id: ${sleep.id}`
+    //   );
+    // }
 
     const results = await db.query(
       `
@@ -88,3 +90,5 @@ class Sleep {
     return results.rows[0];
   }
 }
+
+module.exports = Sleep;

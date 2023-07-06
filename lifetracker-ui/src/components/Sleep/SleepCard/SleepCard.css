@@ -1,0 +1,20 @@
+.sleep-card {
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #70a1ff, #5352ed);
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sleep-card-header {
+    margin-bottom: 10px;
+  }
+  
+  .sleep-card-body {
+    flex-grow: 1;
+  }
+  
+  .sleep-card p {
+    margin-bottom: 5px;
+  }

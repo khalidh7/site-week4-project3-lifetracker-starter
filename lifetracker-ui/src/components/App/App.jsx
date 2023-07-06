@@ -12,6 +12,7 @@ import ExerciseForm from "../Exercise/ExerciseForm/ExerciseForm";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
 import NutritionPage from "../Nutrition/NutritionPage";
+import SleepForm from "../Sleep/SleepForm/SleepForm";
 
 function App() {
   const [token, setToken] = useState();
@@ -52,6 +53,7 @@ function App() {
             element={<ActivityPage user={userGlobal} />}
           />
           <Route path="/sleep" element={<SleepPage user={userGlobal} />} />
+          <Route path="/sleep/add" element={<SleepForm user={userGlobal} />} />
           <Route
             path="/nutrition"
             element={<NutritionPage user={userGlobal} />}

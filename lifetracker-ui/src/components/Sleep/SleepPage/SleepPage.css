@@ -1,6 +1,36 @@
-.SleepPage .button {
+.sleep {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
 }
-.SleepPage .button button {
-  flex: 1;
+
+.sleep-header {
+  margin-bottom: 20px;
+}
+
+.sleep-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sleep-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+.notlogged{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
 }

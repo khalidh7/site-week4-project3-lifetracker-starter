@@ -59,5 +59,17 @@ class Api {
   async addExercise(exercise) {
     return await this.request("POST", `exercise/add`, exercise);
   }
+
+  async sleep(userid) {
+    return await this.request("POST", `sleep/list`, userid);
+  }
+
+  async sleepById(userid, id) {
+    return await this.request("POST", `sleep/${id}`, { userid, id });
+  }
+
+  async addSleep(sleep) {
+    return await this.request("POST", `sleep/add`, sleep);
+  }
 }
 export default new Api();

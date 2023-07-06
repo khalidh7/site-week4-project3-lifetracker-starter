@@ -4,16 +4,17 @@ const Exercise = require("../models/exercise");
 const Sleep = require("../models/sleep");
 const router = express.Router();
 
-router.get("/sleep", async function (req, res, next) {
+router.post("/list", async function (req, res, next) {
   try {
-    const sleep = await Sleep.listSleepForUser(req.body.id);
+    const id = req.body.userid;
+    const sleep = await Sleep.listSleepForUser(id);
     return res.status(201).json({ sleep });
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/sleep/:id", async function (req, res, next) {
+router.post("/:id", async function (req, res, next) {
   try {
     const id = req.params.id;
     const sleep = await Sleep.fetchSleepById(req.body.id, id);
@@ -23,8 +24,9 @@ router.get("/sleep/:id", async function (req, res, next) {
   }
 });
 
-router.post("/sleep/add", async function (req, res, next) {
+router.post("/add", async function (req, res, next) {
   try {
+    console.log(req.body);
     const sleep = await Sleep.createSleep(req.body);
     return res.status(201).json({ sleep });
   } catch (err) {

@@ -22,5 +22,5 @@ CREATE TABLE sleep (
   userid    INTEGER REFERENCES users(id),
   date      TIMESTAMP NOT NULL DEFAULT NOW(),
   duration  INTEGER NOT NULL,
-  starttime TIMESTAMP NOT NULL DEFAULT NOW(),
-  endtime   TIMESTAMP NOT NULL DEFAULT NOW());
+  starttime TEXT NOT NULL,
+  endtime   TEXT NOT NULL);
