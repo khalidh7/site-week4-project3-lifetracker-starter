@@ -26,6 +26,7 @@ router.post("/list/:id", async function (req, res, next) {
 
 router.post("/add", async function (req, res, next) {
   try {
+    console.log(req.body);
     const exercise = await Exercise.createExercise(req.body);
     return res.status(201).json({ exercise });
   } catch (err) {

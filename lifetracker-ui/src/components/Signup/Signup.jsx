@@ -4,33 +4,46 @@ import { useState } from "react";
 import Api from "../../utilities/api";
 
 export default function Signup() {
-    let [email, setEmail] = useState("");
-    let [username, setUsername] = useState("");
-    let [firstname, setfirstname] = useState("");
-    let [lastname, setlastname] = useState("");
-    let [password, setPassword] = useState("");
-    let [confirm, setConfirm] = useState("");
-    let [user, setUser] = useState({email: email, username: username, firstname: firstname, lastname: lastname, password: password});
+  let [email, setEmail] = useState("");
+  let [username, setUsername] = useState("");
+  let [firstname, setfirstname] = useState("");
+  let [lastname, setlastname] = useState("");
+  let [password, setPassword] = useState("");
+  let [confirm, setConfirm] = useState("");
+  let [user, setUser] = useState({
+    email: email,
+    username: username,
+    firstname: firstname,
+    lastname: lastname,
+    password: password
+  });
 
-    function handleOnSubmit(event){
-      if(verifyPassword(password, confirm)){
-        Api.register(user);
-      }
-      // window.location.href = "/excerciseDashbo"; 
+  function handleOnSubmit(event) {
+    if (verifyPassword(password, confirm)) {
+      Api.register(user);
     }
+    // window.location.href = "/excerciseDashbo";
+  }
 
-    function handleValueChange(value, setValue){
-      setValue(value);
-      setUser({email: email, username: username, firstname: firstname, lastname: lastname, password: password});
+  function handleValueChange(value, setValue) {
+    setValue(value);
+    setUser({
+      email: email,
+      username: username,
+      firstname: firstname,
+      lastname: lastname,
+      password: password
+    });
+  }
+
+  function verifyPassword(password, confirm) {
+    if (password === confirm) {
+      return true;
     }
+    return false;
+  }
 
-    function verifyPassword(password, confirm){
-      if(password === confirm){
-        return true;
-      }
-    }
-
-    return (
+  return (
     <div className="Signup-container">
       <h1>Sign Up</h1>
       <form className="form">
@@ -39,7 +52,9 @@ export default function Signup() {
           <input
             type="email"
             id="email"
-            onChange={(event)=>{handleValueChange(event.target.value, setEmail)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setEmail);
+            }}
           />
         </div>
         <div className="form-group">
@@ -47,7 +62,9 @@ export default function Signup() {
           <input
             type="username"
             id="username"
-            onChange={(event)=>{handleValueChange(event.target.value, setUsername)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setUsername);
+            }}
           />
         </div>
         <div className="form-group">
@@ -55,7 +72,9 @@ export default function Signup() {
           <input
             type="firstname"
             id="firstname"
-            onChange={(event)=>{handleValueChange(event.target.value, setfirstname)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setfirstname);
+            }}
           />
         </div>
         <div className="form-group">
@@ -63,7 +82,9 @@ export default function Signup() {
           <input
             type="lastname"
             id="lastname"
-            onChange={(event)=>{handleValueChange(event.target.value, setlastname)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setlastname);
+            }}
           />
         </div>
         <div className="form-group">
@@ -71,7 +92,9 @@ export default function Signup() {
           <input
             type="password"
             id="password"
-            onChange={(event)=>{handleValueChange(event.target.value, setPassword)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setPassword);
+            }}
           />
         </div>
         <div className="form-group">
@@ -79,11 +102,19 @@ export default function Signup() {
           <input
             type="confirm"
             id="confirm"
-            onChange={(event)=>{handleValueChange(event.target.value, setConfirm)}}
+            onChange={(event) => {
+              handleValueChange(event.target.value, setConfirm);
+            }}
           />
         </div>
-        <button type="submit" className="submit-button" onClick={(event)=>handleOnSubmit(event)}>Sign Up</button>
+        <button
+          type="submit"
+          className="submit-button"
+          onClick={(event) => handleOnSubmit(event)}
+        >
+          Sign Up
+        </button>
       </form>
     </div>
-    );
+  );
 }

@@ -7,6 +7,7 @@ import Signup from "../Signup/Signup";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ActivityPage from "../ActivityPage/ActivityPage";
 import ExercisePage from "../Exercise/ExercisePage/ExercisePage";
+import ExerciseForm from "../Exercise/ExerciseForm/ExerciseForm";
 import SleepPage from "../Sleep/SleepPage/SleepPage";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
@@ -54,6 +55,10 @@ function App() {
             element={
               <ExercisePage user={userGlobal} setUserGlobal={setUserGlobal} />
             }
+          />
+          <Route
+            path="/exercise/add"
+            element={<ExerciseForm user={userGlobal} />}
           />
           <Route path="/sleep" element={<SleepPage />} />
           <Route path="*" element={<Navigate to="/" />} />
