@@ -16,12 +16,12 @@ function App() {
   const [userGlobal, setUserGlobal] = useState();
 
   useEffect(() => {
+    setToken(localStorage.getItem("jwt"));
     Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
       setUserGlobal(response);
     });
   }, [token]);
 
-  console.log(userGlobal);
   return (
     <>
       <BrowserRouter>
@@ -49,7 +49,12 @@ function App() {
             path="/activity"
             element={<ActivityPage user={userGlobal} />}
           />
-          <Route path="/exercise" element={<ExercisePage />} />
+          <Route
+            path="/exercise"
+            element={
+              <ExercisePage user={userGlobal} setUserGlobal={setUserGlobal} />
+            }
+          />
           <Route path="/sleep" element={<SleepPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

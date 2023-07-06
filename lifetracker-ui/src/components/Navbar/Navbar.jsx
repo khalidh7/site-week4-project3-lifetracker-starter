@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar({ token, user, setToken, setUser }) {
   const navigate = useNavigate();
 
-  function clearToken(e) {
-    e.preventDefault();
+  function clearToken(event) {
+    event.preventDefault();
     localStorage.removeItem("jwt");
     setToken(null);
     setUser(null);
@@ -52,7 +52,9 @@ export default function Navbar({ token, user, setToken, setUser }) {
             <button
               type="submit"
               className="chakra-button css-1t9i4zo"
-              onClick={(e) => clearToken(e)}
+              onClick={(event) => {
+                clearToken(event);
+              }}
             >
               Sign out
             </button>

@@ -3,7 +3,6 @@ import "./ActivityPage.css";
 import { Button } from "@mui/material";
 
 export default function ActivityPage({ user }) {
-  console.log(user);
   return (
     <div>
       <h1>Welcome {user?.firstname}</h1>

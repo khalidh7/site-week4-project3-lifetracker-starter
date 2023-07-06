@@ -16,7 +16,6 @@ export default function Login({ token, userGlobal, setToken, setUserGlobal }) {
     Api.login(user).then((response) => {
       localStorage.setItem("jwt", response.token);
       setToken(response.token);
-      console.log(token);
     });
     Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
       setUserGlobal(response);
