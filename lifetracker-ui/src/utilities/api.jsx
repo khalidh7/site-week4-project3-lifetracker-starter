@@ -57,7 +57,6 @@ class Api {
   }
 
   async addExercise(exercise) {
-    console.log("API add ex", exercise);
     return await this.request("POST", `exercise/add`, exercise);
   }
 }
