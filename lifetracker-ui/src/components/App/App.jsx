@@ -7,10 +7,11 @@ import Signup from "../Signup/Signup";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ActivityPage from "../ActivityPage/ActivityPage";
 import ExercisePage from "../Exercise/ExercisePage/ExercisePage";
-import ExerciseForm from "../Exercise/ExerciseForm/ExerciseForm";
 import SleepPage from "../Sleep/SleepPage/SleepPage";
+import ExerciseForm from "../Exercise/ExerciseForm/ExerciseForm";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
+import NutritionPage from "../Nutrition/NutritionPage";
 
 function App() {
   const [token, setToken] = useState();
@@ -49,6 +50,11 @@ function App() {
           <Route
             path="/activity"
             element={<ActivityPage user={userGlobal} />}
+          />
+          <Route path="/sleep" element={<SleepPage user={userGlobal} />} />
+          <Route
+            path="/nutrition"
+            element={<NutritionPage user={userGlobal} />}
           />
           <Route
             path="/exercise"

@@ -1,0 +1,17 @@
+.notlogged{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .logged{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto;
+  }

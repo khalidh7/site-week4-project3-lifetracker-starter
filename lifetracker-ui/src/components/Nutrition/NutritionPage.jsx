@@ -1,18 +1,14 @@
 import React from "react";
-import Api from "../../../utilities/api";
-import "./SleepPage.css";
-import { useState, useEffect } from "react";
+import "./NutritionPage.css";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
-import SleepGrid from "../SleepGrid/SleepGrid";
 
-export default function SleepPage({ user }) {
+export default function NutritionPage({ user }) {
   return (
     <>
       {user ? (
         <div>
           <h1>Welcome {user?.firstname}</h1>
-          <h2>Sleep Tracking Coming Soon!</h2>
+          <h2>Nutrition Tracking Coming Soon!</h2>
         </div>
       ) : (
         <div className="notlogged">

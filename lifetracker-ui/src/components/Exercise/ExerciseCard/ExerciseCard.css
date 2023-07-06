@@ -1,0 +1,20 @@
+.exercise-card {
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #70a1ff, #5352ed);
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .exercise-card-header {
+    margin-bottom: 10px;
+  }
+  
+  .exercise-card-body {
+    flex-grow: 1;
+  }
+  
+  .exercise-card p {
+    margin-bottom: 5px;
+  }

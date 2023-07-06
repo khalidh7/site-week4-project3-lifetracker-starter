@@ -1,6 +1,36 @@
-.ExercisePage .button {
+.exercise {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
 }
-.ExercisePage .button button {
-  flex: 1;
+
+.exercise-header {
+  margin-bottom: 20px;
+}
+
+.exercise-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercise-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+.notlogged{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
 }

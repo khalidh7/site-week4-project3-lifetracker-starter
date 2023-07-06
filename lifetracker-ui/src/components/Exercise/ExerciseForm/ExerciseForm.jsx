@@ -28,7 +28,7 @@ export default function ExerciseForm({ user }) {
 
   return (
     <div className="exerciseform-container">
-      <h1>Sign Up</h1>
+      <h1>Add Exercise Entry</h1>
       <form className="form">
         <div className="form-group">
           <label htmlFor="Date">Date MM/DD/YYYY:</label>
