@@ -11,8 +11,9 @@ import SleepPage from "../Sleep/SleepPage/SleepPage";
 import ExerciseForm from "../Exercise/ExerciseForm/ExerciseForm";
 import { useState, useEffect } from "react";
 import Api from "../../utilities/api";
-import NutritionPage from "../Nutrition/NutritionPage";
+import NutritionPage from "../Nutrition/NutritionPage/NutritionPage";
 import SleepForm from "../Sleep/SleepForm/SleepForm";
+import NutritionForm from "../Nutrition/NutritionForm/NutritionForm";
 
 function App() {
   const [token, setToken] = useState();
@@ -67,6 +68,16 @@ function App() {
           <Route
             path="/exercise/add"
             element={<ExerciseForm user={userGlobal} />}
+          />
+          <Route
+            path="/nutrition"
+            element={
+              <NutritionPage user={userGlobal} setUserGlobal={setUserGlobal} />
+            }
+          />
+          <Route
+            path="/nutrition/add"
+            element={<NutritionForm user={userGlobal} />}
           />
           <Route path="/sleep" element={<SleepPage />} />
           <Route path="*" element={<Navigate to="/" />} />

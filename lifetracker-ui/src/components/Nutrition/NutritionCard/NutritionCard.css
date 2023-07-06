@@ -1,0 +1,20 @@
+.nutrition-card {
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #70a1ff, #5352ed);
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .nutrition-card-header {
+    margin-bottom: 10px;
+  }
+  
+  .nutrition-card-body {
+    flex-grow: 1;
+  }
+  
+  .nutrition-card p {
+    margin-bottom: 5px;
+  }

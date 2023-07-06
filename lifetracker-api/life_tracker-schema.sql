@@ -24,3 +24,11 @@ CREATE TABLE sleep (
   duration  INTEGER NOT NULL,
   starttime TEXT NOT NULL,
   endtime   TEXT NOT NULL);
+
+  CREATE TABLE nutrition (
+  id       SERIAL PRIMARY KEY,
+  userid    INTEGER REFERENCES users(id),
+  date      TIMESTAMP NOT NULL DEFAULT NOW(),
+  name  TEXT NOT NULL,
+  calories INTEGER NOT NULL,
+  protein   INTEGER NOT NULL);

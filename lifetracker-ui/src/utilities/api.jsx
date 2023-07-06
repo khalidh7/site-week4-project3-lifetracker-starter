@@ -71,5 +71,17 @@ class Api {
   async addSleep(sleep) {
     return await this.request("POST", `sleep/add`, sleep);
   }
+
+  async nutrition(userid) {
+    return await this.request("POST", `nutrition/list`, userid);
+  }
+
+  // async nutritionById(userid, id) {
+  //   return await this.request("POST", `nutrition/${id}`, { userid, id });
+  // }
+
+  async addNutrition(nutrition) {
+    return await this.request("POST", `nutrition/add`, nutrition);
+  }
 }
 export default new Api();

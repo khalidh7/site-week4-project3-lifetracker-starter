@@ -7,6 +7,7 @@ const config = require("./config");
 const authRoutes = require("./routes/auth");
 const exerciseRoutes = require("./routes/exercise");
 const sleepRoutes = require("./routes/sleep");
+const nutritionRoutes = require("./routes/nutrition");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(morgan("tiny"));
 app.use("/auth", authRoutes);
 app.use("/exercise", exerciseRoutes);
 app.use("/sleep", sleepRoutes);
+app.use("/nutrition", nutritionRoutes);
 
 // health check
 app.get("/", function (req, res) {
