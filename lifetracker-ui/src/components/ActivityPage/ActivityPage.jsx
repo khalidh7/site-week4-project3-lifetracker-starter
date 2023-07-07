@@ -29,19 +29,13 @@ export default function ActivityPage({ user }) {
             {stats.avgs ? parseInt(stats.avgs).toFixed(1) : 0}
           </h2>
           <a href="/exercise">
-            <button variant="contained" color="primary" className="actbutton">
-              View Exercise Entries
-            </button>
+            <button className="actbutton">View Exercise Entries</button>
           </a>
           <a href="/nutrition">
-            <button variant="contained" color="primary" className="actbutton">
-              View Meal Entries
-            </button>
+            <button className="actbutton">View Meal Entries</button>
           </a>
           <a href="/sleep">
-            <button variant="contained" color="primary" className="actbutton">
-              View Sleep Entries
-            </button>
+            <button className="actbutton">View Sleep Entries</button>
           </a>
         </div>
       ) : (
