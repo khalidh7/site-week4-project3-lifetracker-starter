@@ -7,7 +7,7 @@ export default function ActivityPage({ user }) {
   const [stats, setStats] = useState({});
   useEffect(() => {
     async function getStats() {
-      const response = await Api.stats(user.id);
+      const response = await Api.stats({ userid: user.id });
       setStats(response);
     }
     getStats();
