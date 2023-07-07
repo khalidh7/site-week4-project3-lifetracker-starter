@@ -1,6 +1,7 @@
 import React from "react";
 import "./ActivityPage.css";
 import { useState, useEffect } from "react";
+import Api from "../../utilities/api";
 
 export default function ActivityPage({ user }) {
   const [stats, setStats] = useState({});
