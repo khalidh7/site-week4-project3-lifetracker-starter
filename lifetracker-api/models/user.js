@@ -164,11 +164,14 @@ class User {
 
   static async fetchUserStats(userId) {
     const result = await db.query(
-      `(SELECT SUM(duration) FROM exercises WHERE userid = $1)`,
+      `SELECT
+      (SELECT SUM(duration) FROM exercises WHERE userid = $1) AS totalE,
+      (SELECT AVG(calories) FROM nutrition WHERE userid = $1) AS avgC,
+      (SELECT AVG(duration) FROM sleep WHERE userid = $1) AS avgS;`,
       [userId]
     );
 
-    return result;
+    return result.rows[0];
   }
 }
 module.exports = User;
