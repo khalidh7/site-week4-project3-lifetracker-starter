@@ -13,10 +13,7 @@ function getDatabaseUri() {
   const dbPort = process.env.DATABASE_PORT || 5432;
   const dbProdName = "life_tracker";
   const dbName = "life_tracker";
-  return (
-    process.env.DATABASE_URL ||
-    `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
-  );
+  return "postgres://lifetracker_db_9lh8_user:Ef5lp37AFyxHiVmsLBVEuyBxJYmkFW1o@dpg-cik5n2p8g3nc2g8e8ujg-a/lifetracker_db_9lh8";
 }
 
 const BCRYPT_WORK_FACTOR = 1;
