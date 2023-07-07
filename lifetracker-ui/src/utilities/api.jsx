@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.url = "https://lifetracker-api-ex92.onrender.com/";
+    this.url = "https://lifetracker-api-ex92.onrender.com";
     this.token = localStorage.getItem("token") || null;
     this.tokenName = "lifeTrackerToken";
   }
