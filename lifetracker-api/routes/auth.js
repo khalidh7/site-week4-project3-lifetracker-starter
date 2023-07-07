@@ -37,6 +37,7 @@ router.post("/profile", async function (req, res, next) {
 router.post("/stats", async function (req, res, next) {
   try {
     const userStats = await User.fetchUserStats(req.body.userid);
+    console.log(userStats);
     res.json(userStats);
   } catch (err) {
     next(err);
