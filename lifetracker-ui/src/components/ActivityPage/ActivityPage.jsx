@@ -8,8 +8,29 @@ export default function ActivityPage({ user }) {
       {user ? (
         <div className="logged">
           <h1>Welcome {user?.firstname}</h1>
-          <Button href="/exercise" variant="contained" color="primary">
+          <Button
+            href="/exercise"
+            variant="contained"
+            color="primary"
+            className="actbutton"
+          >
             View Exercise Entries
+          </Button>
+          <Button
+            href="/nutrition"
+            variant="contained"
+            color="primary"
+            className="actbutton"
+          >
+            View Meal Entries
+          </Button>
+          <Button
+            href="/sleep"
+            variant="contained"
+            color="primary"
+            className="actbutton"
+          >
+            View Sleep Entries
           </Button>
         </div>
       ) : (
