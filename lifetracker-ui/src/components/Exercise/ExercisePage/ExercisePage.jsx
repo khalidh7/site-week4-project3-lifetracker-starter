@@ -2,7 +2,6 @@ import React from "react";
 import "./ExercisePage.css";
 import ExerciseGrid from "../ExerciseGrid/ExerciseGrid";
 import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Api from "../../../utilities/api";
 
@@ -36,14 +35,14 @@ export default function ExercisePage({ user, setUserGlobal }) {
           </div>
           <div className="exercise-body">
             <Link to="/exercise/add" className="exercise-button">
-              <Button variant="contained" color="primary">
+              <button variant="contained" color="primary">
                 Add Exercise
-              </Button>
+              </button>
             </Link>
             <Link className="exercise-button">
-              <Button variant="contained" color="primary" onClick={sortCards}>
+              <button variant="contained" color="primary" onClick={sortCards}>
                 Sort
-              </Button>
+              </button>
             </Link>
             {exercise?.length > 0 ? (
               <ExerciseGrid exercise={exercise} />
@@ -56,9 +55,9 @@ export default function ExercisePage({ user, setUserGlobal }) {
         <div className="notlogged">
           <h1>Welcome</h1>
           <h2>Please Login in to Access</h2>
-          <Button href="/login" color="primary" variant="contained">
+          <button href="/login" color="primary" variant="contained">
             Login
-          </Button>
+          </button>
         </div>
       )}
     </>

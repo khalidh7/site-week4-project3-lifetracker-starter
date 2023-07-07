@@ -33,7 +33,7 @@
     border-radius: 4px;
   }
   
-  .submit-button {
+  .button {
     width: 100%;
     padding: 10px;
     background-color: #007edb;
@@ -43,7 +43,7 @@
     cursor: pointer;
   }
   
-  .submit-button:hover {
+  .button:hover {
     background-color: #45a049;
   }
   

@@ -2,7 +2,6 @@ import React from "react";
 import "./SleepPage.css";
 import SleepGrid from "../SleepGrid/SleepGrid";
 import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Api from "../../../utilities/api";
 
@@ -36,14 +35,14 @@ export default function SleepPage({ user, setUserGlobal }) {
           </div>
           <div className="sleep-body">
             <Link to="/sleep/add" className="sleep-button">
-              <Button variant="contained" color="primary">
+              <button variant="contained" color="primary">
                 Add Sleep
-              </Button>
+              </button>
             </Link>
             <Link className="sleep-button">
-              <Button variant="contained" color="primary" onClick={sortCards}>
+              <button variant="contained" color="primary" onClick={sortCards}>
                 Sort
-              </Button>
+              </button>
             </Link>
             {sleep?.length > 0 ? (
               <SleepGrid sleep={sleep} />
@@ -56,9 +55,9 @@ export default function SleepPage({ user, setUserGlobal }) {
         <div className="notlogged">
           <h1>Welcome</h1>
           <h2>Please Login in to Access</h2>
-          <Button href="/login" color="primary" variant="contained">
+          <button href="/login" color="primary" variant="contained">
             Login
-          </Button>
+          </button>
         </div>
       )}
     </>

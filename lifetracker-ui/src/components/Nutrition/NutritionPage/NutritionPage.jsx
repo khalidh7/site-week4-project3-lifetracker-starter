@@ -2,7 +2,6 @@ import React from "react";
 import "./NutritionPage.css";
 import NutritionGrid from "../NutritionGrid/NutritionGrid";
 import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Api from "../../../utilities/api";
 
@@ -36,14 +35,14 @@ export default function NutritionPage({ user, setUserGlobal }) {
           </div>
           <div className="nutrition-body">
             <Link to="/nutrition/add" className="nutrition-button">
-              <Button variant="contained" color="primary">
+              <button variant="contained" color="primary">
                 Add Meal
-              </Button>
+              </button>
             </Link>
             <Link className="nutrition-button">
-              <Button variant="contained" color="primary" onClick={sortCards}>
+              <button variant="contained" color="primary" onClick={sortCards}>
                 Sort
-              </Button>
+              </button>
             </Link>
             {nutrition?.length > 0 ? (
               <NutritionGrid nutrition={nutrition} />
@@ -56,9 +55,9 @@ export default function NutritionPage({ user, setUserGlobal }) {
         <div className="notlogged">
           <h1>Welcome</h1>
           <h2>Please Login in to Access</h2>
-          <Button href="/login" color="primary" variant="contained">
+          <button href="/login" color="primary" variant="contained">
             Login
-          </Button>
+          </button>
         </div>
       )}
     </>
