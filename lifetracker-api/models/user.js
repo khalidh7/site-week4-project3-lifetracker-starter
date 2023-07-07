@@ -155,6 +155,7 @@ class User {
   static async verifyAuthToken(token) {
     try {
       const decoded = jwt.verify(token, secretKey);
+      console.log("decoded", decoded);
       return decoded;
     } catch (err) {
       return null;
