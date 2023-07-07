@@ -21,11 +21,14 @@ By the end of this project you will be able to...
 
 ## Application Features
 
-<a href="https://www.loom.com/share/70a3943c8ed547c7947acff29b70940d">
-    <p>Lifetracker Demo  - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/70a3943c8ed547c7947acff29b70940d-with-play.gif">
-  </a>
+https://www.loom.com/share/70a3943c8ed547c7947acff29b70940d?sid=3a0b7e91-f39f-478a-9ce5-3fca0fa18a02
 
+<a href="https://www.loom.com/share/70a3943c8ed547c7947acff29b70940d">
+<p>Lifetracker Demo - Watch Video</p>
+<img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/70a3943c8ed547c7947acff29b70940d-with-play.gif">
+</a>
+
+Here are some code snippets from the fetchByid endpoints
 <img src="./idModel.png"/>
 <img src="./idRoute.png"/>
 
