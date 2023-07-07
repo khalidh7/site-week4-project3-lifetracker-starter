@@ -156,7 +156,6 @@ class User {
   static async verifyAuthToken(token) {
     try {
       const decoded = jwt.verify(token, secretKey);
-      console.log("decoded", decoded);
       return decoded;
     } catch (err) {
       return null;
@@ -165,13 +164,15 @@ class User {
 
   static async fetchUserStats(userId) {
     const result = await db.query(
-      `SELECT 
-      (SELECT SUM(duration) FROM exercises WHERE userid = $1),
-      (SELECT AVG(calories) FROM nutrition WHERE userid = $1),
-      (SELECT AVG(duration) FROM sleep WHERE userid = $1);`,
+      `SELECT
+      (SELECT SUM(duration) FROM exercises WHERE userid = $1) AS totalExercise,
+      (SELECT AVG(calories) FROM nutrition WHERE userid = $1) AS avgCalories,
+      (SELECT AVG(duration) FROM sleep WHERE userid = $1) AS avgSleep;`,
       [userId]
     );
-    console.log("result", result);
+
+    const stats = result.rows[0];
+    return stats;
   }
 }
 module.exports = User;
