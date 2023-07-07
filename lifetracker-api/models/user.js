@@ -149,6 +149,7 @@ class User {
     };
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+    console.log("token", token);
     return token;
   }
 
