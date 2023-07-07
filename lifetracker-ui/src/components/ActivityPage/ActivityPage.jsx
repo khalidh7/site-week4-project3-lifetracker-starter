@@ -20,8 +20,10 @@ export default function ActivityPage({ user }) {
         <div className="logged">
           <h1>Welcome {user?.firstname}</h1>
           <h2>Total Hours Exercises: {stats.totale ? stats.totale : 0}</h2>
-          <h2>Average Calories Consumed: {stats.avgc ? stats.avgc : 0}</h2>
-          <h2>Average Hours Slept: {stats.avgs ? stats.avgs : 0}</h2>
+          <h2>
+            Average Calories Consumed: {stats.avgc ? stats.avgc.toFixed(1) : 0}
+          </h2>
+          <h2>Average Hours Slept: {stats.avgs ? stats.avgs.toFixed(1) : 0}</h2>
           <button
             href="/exercise"
             variant="contained"
