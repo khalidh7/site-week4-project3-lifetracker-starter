@@ -21,6 +21,8 @@ By the end of this project you will be able to...
 
 ## Application Features
 
+https://www.loom.com/share/70a3943c8ed547c7947acff29b70940d?sid=35ba7976-d48c-4572-beae-06c4d23d4679
+
 <a href="https://www.loom.com/share/70a3943c8ed547c7947acff29b70940d">
     <p>Lifetracker Demo  - Watch Video</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/70a3943c8ed547c7947acff29b70940d-with-play.gif">
