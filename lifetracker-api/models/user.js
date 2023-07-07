@@ -149,6 +149,7 @@ class User {
     };
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+    console.log("token", token);
     return token;
   }
 
@@ -160,6 +161,17 @@ class User {
       return null;
     }
   }
-}
 
+  static async fetchUserStats(userId) {
+    const result = await db.query(
+      `SELECT
+      (SELECT SUM(duration) FROM exercises WHERE userid = $1) AS totalE,
+      (SELECT AVG(calories) FROM nutrition WHERE userid = $1) AS avgC,
+      (SELECT AVG(duration) FROM sleep WHERE userid = $1) AS avgS;`,
+      [userId]
+    );
+
+    return result.rows[0];
+  }
+}
 module.exports = User;

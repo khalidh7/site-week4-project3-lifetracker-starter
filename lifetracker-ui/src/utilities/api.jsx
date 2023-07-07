@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.url = "http://localhost:5000";
+    this.url = "https://lifetracker-api-ex92.onrender.com";
     this.token = localStorage.getItem("token") || null;
     this.tokenName = "lifeTrackerToken";
   }
@@ -37,6 +37,7 @@ class Api {
   }
 
   async login(creds) {
+    console.log(creds);
     return await this.request("POST", "auth/login", creds);
   }
 
@@ -46,6 +47,10 @@ class Api {
 
   async user(token) {
     return await this.request("POST", `auth/profile`, token);
+  }
+
+  async stats(id) {
+    return await this.request("POST", `auth/stats`, id);
   }
 
   async exercises(userid) {
