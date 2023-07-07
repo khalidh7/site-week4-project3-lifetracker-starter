@@ -49,6 +49,10 @@ class Api {
     return await this.request("POST", `auth/profile`, token);
   }
 
+  async stats(id) {
+    return await this.request("POST", `auth/stats`, id);
+  }
+
   async exercises(userid) {
     return await this.request("POST", `exercise/list`, userid);
   }
