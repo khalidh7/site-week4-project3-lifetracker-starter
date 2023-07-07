@@ -164,10 +164,7 @@ class User {
 
   static async fetchUserStats(userId) {
     const result = await db.query(
-      `SELECT
-      (SELECT SUM(duration) FROM exercises WHERE userid = $1) AS totalExercise,
-      (SELECT AVG(calories) FROM nutrition WHERE userid = $1) AS avgCalories,
-      (SELECT AVG(duration) FROM sleep WHERE userid = $1) AS avgSleep;`,
+      `(SELECT SUM(duration) FROM exercises WHERE userid = $1) AS totalExercise;`,
       [userId]
     );
 
