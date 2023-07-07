@@ -11,6 +11,7 @@ export default function ActivityPage({ user }) {
       setStats(response);
     }
     getStats();
+    console.log(stats);
   }, [user]);
 
   return (
