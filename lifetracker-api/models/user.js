@@ -171,7 +171,7 @@ class User {
       [userId]
     );
 
-    const stats = result.rows[0];
+    const stats = result;
     return stats;
   }
 }
