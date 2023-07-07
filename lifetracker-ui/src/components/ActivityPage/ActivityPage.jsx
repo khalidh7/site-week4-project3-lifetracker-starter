@@ -21,9 +21,13 @@ export default function ActivityPage({ user }) {
           <h1>Welcome {user?.firstname}</h1>
           <h2>Total Hours Exercises: {stats.totale ? stats.totale : 0}</h2>
           <h2>
-            Average Calories Consumed: {stats.avgc ? stats.avgc.toFixed(1) : 0}
+            Average Calories Consumed:{" "}
+            {stats.avgc ? parseInt(stats.avgc).toFixed(1) : 0}
           </h2>
-          <h2>Average Hours Slept: {stats.avgs ? stats.avgs.toFixed(1) : 0}</h2>
+          <h2>
+            Average Hours Slept:{" "}
+            {stats.avgs ? parseInt(stats.avgs).toFixed(1) : 0}
+          </h2>
           <a href="/exercise">
             <button variant="contained" color="primary" className="actbutton">
               View Exercise Entries
