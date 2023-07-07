@@ -36,7 +36,7 @@ router.post("/profile", async function (req, res, next) {
 
 router.post("/stats", async function (req, res, next) {
   try {
-    const userStats = await User.verifyAuthToken(req.body.id);
+    const userStats = await User.fetchUserStats(req.body.id);
     res.json(userStats);
   } catch (err) {
     next(err);
