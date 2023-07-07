@@ -162,6 +162,16 @@ class User {
       return null;
     }
   }
-}
 
+  static async fetchUserStats(userId) {
+    const result = await db.query(
+      `SELECT 
+      (SELECT SUM(duration) FROM exercises WHERE userid = $1),
+      (SELECT AVG(calories) FROM nutrition WHERE userid = $1),
+      (SELECT AVG(duration) FROM sleep WHERE userid = $1);`,
+      [userId]
+    );
+    console.log("result", result);
+  }
+}
 module.exports = User;

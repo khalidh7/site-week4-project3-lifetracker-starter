@@ -28,7 +28,8 @@ router.post("/register", async function (req, res, next) {
 router.post("/profile", async function (req, res, next) {
   try {
     const userInfo = await User.verifyAuthToken(req.body.token);
-    res.json(userInfo);
+    const userstats = await User.fetchUserStats(userInfo.id);
+    res.json(userInfo, userstats);
   } catch (err) {
     next(err);
   }
