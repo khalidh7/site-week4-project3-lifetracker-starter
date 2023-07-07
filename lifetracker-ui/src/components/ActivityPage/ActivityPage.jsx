@@ -24,30 +24,21 @@ export default function ActivityPage({ user }) {
             Average Calories Consumed: {stats.avgc ? stats.avgc.toFixed(1) : 0}
           </h2>
           <h2>Average Hours Slept: {stats.avgs ? stats.avgs.toFixed(1) : 0}</h2>
-          <button
-            href="/exercise"
-            variant="contained"
-            color="primary"
-            className="actbutton"
-          >
-            View Exercise Entries
-          </button>
-          <button
-            href="/nutrition"
-            variant="contained"
-            color="primary"
-            className="actbutton"
-          >
-            View Meal Entries
-          </button>
-          <button
-            href="/sleep"
-            variant="contained"
-            color="primary"
-            className="actbutton"
-          >
-            View Sleep Entries
-          </button>
+          <a href="/exercise">
+            <button variant="contained" color="primary" className="actbutton">
+              View Exercise Entries
+            </button>
+          </a>
+          <a href="/nutrition">
+            <button variant="contained" color="primary" className="actbutton">
+              View Meal Entries
+            </button>
+          </a>
+          <a href="/sleep">
+            <button variant="contained" color="primary" className="actbutton">
+              View Sleep Entries
+            </button>
+          </a>
         </div>
       ) : (
         <div className="notlogged">
